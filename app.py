@@ -9,7 +9,7 @@ import random
 # ============================
 WIDTH = 300
 HEIGHT = 400
-FONT_PATH = r"C:\Windows\Fonts\DejaVuSans.ttc"
+FONT_PATH = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 MARGIN = 12
 HEADERS = {"User-Agent": "MomirPrinter/1.0"}
 
