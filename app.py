@@ -9,7 +9,7 @@ import random
 # ============================
 WIDTH = 300
 HEIGHT = 400
-FONT_PATH = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+FONT_PATH = "NotoSansJP-VariableFont_wght.ttf"
 MARGIN = 12
 HEADERS = {"User-Agent": "MomirPrinter/1.0"}
 
