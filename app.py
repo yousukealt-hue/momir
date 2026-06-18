@@ -9,7 +9,7 @@ import random
 # ============================
 WIDTH = 300
 HEIGHT = 400
-FONT_PATH = "NotoSansJP-VariableFont_wght.ttf"
+FONT_PATH = "MPLUS1-Bold.ttf"
 MARGIN = 12
 HEADERS = {"User-Agent": "MomirPrinter/1.0"}
 
