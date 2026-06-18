@@ -25,6 +25,17 @@ HEADERS = {"User-Agent": "MomirPrinter/1.0"}
 # fetch_japanese_or_english_print
 
 # ============================
+# レアリティ
+# ============================
+def rarity_to_letter(r):
+    return {
+        "common": "C",
+        "uncommon": "U",
+        "rare": "R",
+        "mythic": "M"
+    }.get(r, "?")
+
+# ============================
 # 名前＋マナコスト
 # ============================
 
@@ -205,6 +216,9 @@ def generate_card_image(cmc):
     oracle = card.get("printed_text") or card.get("oracle_text") or ""
     p = card.get("power", "?")
     t = card.get("toughness", "?")
+    rarity = rarity_to_letter(card.get("rarity", ""))
+    set_code = card.get("set", "").upper()
+
 
     # --- カード画像取得 ---
     img_url = card["image_uris"]["normal"]
@@ -264,6 +278,11 @@ def generate_card_image(cmc):
         max_height=remaining_height
     )
 
+    # --- セットコード＋レアリティ（左下） ---
+    info_text = f"{set_code} • {rarity}"
+    font_info = ImageFont.truetype(FONT_PATH, 14)
+    draw.text((MARGIN, HEIGHT - 10 - h_pt), info_text, font=font_info, fill=0)
+    
     # --- P/T（右下固定） ---
     bbox = draw.textbbox((0, 0), pt_text, font=font_pt)
     w_pt = bbox[2] - bbox[0]
