@@ -305,30 +305,25 @@ st.write("CMC を選んでカードを生成しよう")
 if "history" not in st.session_state:
     st.session_state.history = []
 
+# ★ 追加：前回生成した画像
+if "last_image" not in st.session_state:
+    st.session_state.last_image = None
+
 cmc = st.number_input("CMC", min_value=0, max_value=20, value=3)
 
-# 大きいボタン（iPhone向け）
+# カード生成ボタン
 if st.button("カード生成", use_container_width=True):
     img = generate_card_image(cmc)
-    st.image(img, caption="生成されたカード", width=300)
-
-
-    # ダウンロード用データ
-    buf = io.BytesIO()
-    img.save(buf, format="PNG")
-    byte_im = buf.getvalue()
-
-    st.download_button(
-        label="画像を保存（iPhone用）",
-        data=byte_im,
-        file_name="momir_card.png",
-        mime="image/png",
-        use_container_width=True
-    )
+    st.session_state.last_image = img
 
     # 履歴に追加（最大5枚）
     st.session_state.history.append(img)
     st.session_state.history = st.session_state.history[-5:]
+
+# ★ 追加：画像表示（CMC変更では更新されない）
+if st.session_state.last_image is not None:
+    st.image(st.session_state.last_image, caption="生成されたカード", width=300)
+
 
 # ============================
 # 生成履歴（横並び）
