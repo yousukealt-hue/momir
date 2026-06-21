@@ -298,8 +298,8 @@ def generate_card_image(cmc):
 # ============================
 # Streamlit UI
 # ============================
-st.title("Momir Web Printer (EZSign Edition)")
-st.write("CMC を選んでカードを生成しよう")
+st.title("Momir Web Printer")
+st.write("マナ総量 を選んでカードを生成しよう")
 
 # 履歴初期化
 if "history" not in st.session_state:
