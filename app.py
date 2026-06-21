@@ -309,7 +309,7 @@ if "history" not in st.session_state:
 if "last_image" not in st.session_state:
     st.session_state.last_image = None
 
-cmc = st.number_input("CMC", min_value=0, max_value=20, value=3)
+cmc = st.number_input("マナ総量", min_value=0, max_value=20, value=3)
 
 # カード生成ボタン
 if st.button("カード生成", use_container_width=True):
